@@ -1,0 +1,27 @@
+<div>
+  <h1>{{title}}</h1>
+  <h2>City</h2>
+  <form [formGroup]="cityForrecastForm" (ngSubmit)="onSubmit()">
+  <select name="city" id="city" formControlName="cityName" (change)="getForrecast($event)">
+    <option class="city" [value]="city" *ngFor="let city of cities">{{city}}</option>
+    
+  </select>
+ 
+  <div>
+
+    <div *ngFor="let day of cityForecast">
+        <div id="day">{{day.day | date:'MMMM d'}}</div>
+        <div>
+            <img src="../../assets/icons/{{day.icon}}.png" alt="No Image"/>
+        </div>
+        <div class="temp">
+            <div id="temprature">
+               {{day.temprature}}&#8451;
+            </div>
+            
+        </div>
+    </div>
+</div>
+<button>Apply</button>
+</form>
+</div>
