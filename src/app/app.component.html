@@ -2,12 +2,12 @@
   <h1>{{title}}</h1>
   <h2>City</h2>
   <form [formGroup]="cityForrecastForm" (ngSubmit)="onSubmit()">
-  <select name="city" id="city" formControlName="cityName" (change)="getForrecast($event)">
+  <select name="city" id="city" formControlName="cityName">
     <option class="city" [value]="city" *ngFor="let city of cities">{{city}}</option>
     
   </select>
  
-  <div>
+  <div class="container">
 
     <div *ngFor="let day of cityForecast">
         <div id="day">{{day.day | date:'MMMM d'}}</div>

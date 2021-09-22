@@ -23,14 +23,14 @@ export class AppComponent {
   ngOnInit(): void {
     
    this.citySelected='';
-  this.getForrecast(event);
+  this.getForrecast();
   }
   onSubmit() {
     // alert(JSON.stringify(this.oppoSuitsForm.value))
   }
-  getForrecast(event:any){
-    this.citySelected=this.cityForrecastForm.get('cityName')?.value;
-    this.ws.getFutureForecast(this.citySelected).subscribe((data)=>{ let temp=Object(data);
+  getForrecast(){
+    // this.citySelected=this.cityForrecastForm.get('cityName')?.value;
+    this.ws.getFutureForecast('Ottawa').subscribe((data)=>{ let temp=Object(data);
 
       for(let i=0;i<temp.data.length;i++){
         const tempData:Forecast={
