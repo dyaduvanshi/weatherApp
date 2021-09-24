@@ -1,16 +1,23 @@
-<div>
-  <h1>{{title}}</h1>
-  <h2>City</h2>
-  <form [formGroup]="cityForrecastForm" (ngSubmit)="onSubmit()">
-  <select name="city" id="city" formControlName="cityName">
-    <option class="city" [value]="city" *ngFor="let city of cities">{{city}}</option>
+<div class="container">
+  
+  <div id="title">
     
-  </select>
+    <h1>{{title}}</h1>
+  
+  </div>
+  <div id="forrecastCard">
+     <h2>City</h2>
+    <select name="city" id="city" #cityName aria-placeholder="Select city">
+        <option value="" disabled selected>Select city</option>
+        <option [value]="city" *ngFor="let city of cities">{{city}}</option>
+    
+    </select>
  
-  <div class="container">
+    <div class="forrecast">
 
-    <div *ngFor="let day of cityForecast">
-        <div id="day">{{day.day | date:'MMMM d'}}</div>
+      <div *ngFor="let day of cityForecast" class="card">
+        <div class="day">{{   day.day | date:'EEEE'}}</div>
+        <div class="day">{{   day.day | date:'MMM d'}}</div>
         <div>
             <img src="../../assets/icons/{{day.icon}}.png" alt="No Image"/>
         </div>
@@ -20,8 +27,10 @@
             </div>
             
         </div>
+      </div>
     </div>
-</div>
-<button>Apply</button>
-</form>
+    <div id="btnApply"> 
+       <button (click)="getForrecast(cityName.value)">Apply</button>
+    </div>
+  </div>
 </div>
